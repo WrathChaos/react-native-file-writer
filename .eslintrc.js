@@ -41,7 +41,7 @@ module.exports = {
     "max-len": ["error", 120],
     "no-array-constructor": 0,
     "@typescript-eslint/ban-ts-comment": 2,
-    "@typescript-eslint/no-explicit-any": 1,
+    "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "react/jsx-filename-extension": [
       1,

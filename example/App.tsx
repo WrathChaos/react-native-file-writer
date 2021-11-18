@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, SafeAreaView } from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
-import FileWriter from "./lib/FileWriter";
+import FileWriter from "react-native-file-writer";
 
 const mockData = [
   {

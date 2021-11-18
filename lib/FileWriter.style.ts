@@ -1,6 +1,6 @@
 import { ViewStyle, TextStyle, Dimensions, StyleSheet } from "react-native";
 
-const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("screen");
+const { width: ScreenWidth } = Dimensions.get("screen");
 
 interface Style {
   container: ViewStyle;
