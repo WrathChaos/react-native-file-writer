@@ -1,8 +1,8 @@
 {
   "name": "react-native-file-writer",
-  "version": "1.0.5",
-  "description": "Extremely easy to create a React Native Component Library with both Stateful and Functional Component Examples.",
-  "main": "./build/dist/index.js",
+  "version": "0.1.0",
+  "description": "Easy to use export/write file with any format with the given data for React Native",
+  "main": "./build/dist/FileWriter.js",
   "repository": "git@github.com:WrathChaos/react-native-file-writer.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",

@@ -22,19 +22,38 @@ const mockData = [
 ];
 
 const App = () => {
+  const showFileManager = (path: string) => {
+    Alert.alert(
+      "React Native File Writer",
+      "File is exported successfully, do you want to open it?", // <- this part is optional, you can pass an empty string
+      [
+        {
+          text: "OK",
+          onPress: () => {
+            RNFetchBlob.android.actionViewIntent(path, "application/json");
+          },
+        },
+        {
+          text: "Cancel",
+          onPress: () => {},
+        },
+      ],
+      { cancelable: false },
+    );
+  };
+
   return (
     <SafeAreaView
       style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
     >
       <FileWriter
         data={mockData}
-        filename="freakycoder123"
+        filename="freakycoder"
         fileExtension="json"
         enableStringify
         enableDecycle
         onPress={(path: string) => {
-          Alert.alert("FileWriter", path);
-          RNFetchBlob.android.actionViewIntent(path, "application/json");
+          showFileManager(path);
         }}
       />
     </SafeAreaView>

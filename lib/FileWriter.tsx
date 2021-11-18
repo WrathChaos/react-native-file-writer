@@ -2,9 +2,9 @@ import React from "react";
 import {
   View,
   Text,
-  Dimensions,
   StyleProp,
   ViewStyle,
+  TextStyle,
   TouchableOpacity,
 } from "react-native";
 import { Encoding } from "rn-fetch-blob";
@@ -14,13 +14,14 @@ import { Encoding } from "rn-fetch-blob";
 import styles from "./FileWriter.style";
 import { writeFile } from "./utils";
 
-const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("screen");
-
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
+type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
 
 interface IFileWriterProps {
   style?: CustomStyleProp;
+  textStyle?: CustomTextStyleProp;
   encoding?: Encoding;
+  TouchableComponent?: any;
   data: any;
   filename: string;
   fileExtension: string;
@@ -37,6 +38,9 @@ const FileWriter: React.FC<IFileWriterProps> = ({
   encoding,
   enableDecycle,
   enableStringify,
+  textStyle,
+  children,
+  TouchableComponent = TouchableOpacity,
   onPress,
 }) => {
   const handlePress = () => {
@@ -56,23 +60,16 @@ const FileWriter: React.FC<IFileWriterProps> = ({
       });
   };
 
+  const DefaultTextChild = () => (
+    <Text style={[styles.textStyle, textStyle]}>
+      File Writer: Export Given Data
+    </Text>
+  );
+
   return (
-    <TouchableOpacity
-      style={{
-        height: 50,
-        width: ScreenWidth * 0.9,
-        alignItems: "center",
-        justifyContent: "center",
-        borderColor: "#132853",
-        borderWidth: 2,
-        borderRadius: 12,
-      }}
-      onPress={handlePress}
-    >
-      <Text style={{ color: "#132853", fontSize: 16, fontWeight: "500" }}>
-        File Writer: Export Given Data
-      </Text>
-    </TouchableOpacity>
+    <TouchableComponent style={[styles.container, style]} onPress={handlePress}>
+      {children || <DefaultTextChild />}
+    </TouchableComponent>
   );
 };
 
