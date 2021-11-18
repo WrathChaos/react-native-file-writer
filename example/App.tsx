@@ -5,17 +5,17 @@ import FileWriter from "./lib/FileWriter";
 
 const mockData = [
   {
-    name: "FreakyCoder123",
+    name: "FreakyCoder",
     email: "kurayogun@gmail.com",
     github: "https://github.com/WrathChaos",
   },
   {
-    name: "FreakyCoder123",
+    name: "Kuray",
     email: "kurayogun@gmail.com",
     github: "https://github.com/WrathChaos",
   },
   {
-    name: "FreakyCoder123",
+    name: "Test JSON",
     email: "kurayogun@gmail.com",
     github: "https://github.com/WrathChaos",
   },
