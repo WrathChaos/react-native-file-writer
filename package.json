@@ -1,6 +1,6 @@
 {
   "name": "react-native-file-writer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Easy to use export/write file with any format with the given data for React Native",
   "main": "./build/dist/FileWriter.js",
   "repository": "git@github.com:WrathChaos/react-native-file-writer.git",

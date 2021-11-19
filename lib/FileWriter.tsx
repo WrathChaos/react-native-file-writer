@@ -33,6 +33,7 @@ interface IFileWriterProps {
   TouchableComponent?: any;
   data: any | IDataType[];
   filename: string;
+  buttonText: string;
   fileExtension: string;
   enableDecycle?: boolean;
   enableStringify?: boolean;
@@ -42,6 +43,7 @@ interface IFileWriterProps {
 const FileWriter: React.FC<IFileWriterProps> = ({
   style,
   data,
+  buttonText,
   filename,
   fileExtension,
   encoding,
@@ -93,9 +95,7 @@ const FileWriter: React.FC<IFileWriterProps> = ({
   };
 
   const DefaultTextChild = () => (
-    <Text style={[styles.textStyle, textStyle]}>
-      File Writer: Export Given Data
-    </Text>
+    <Text style={[styles.textStyle, textStyle]}>{buttonText}</Text>
   );
 
   return (
