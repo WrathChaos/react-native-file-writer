@@ -123,6 +123,7 @@ should work of the example project.
 | data          |  any   | undefined | set your own data to write/export it on file         |
 | filename      | string | undefined | set the filename for the file                        |
 | fileExtension | string | undefined | set the file extenstion for the file such as `.json` |
+| buttonText    | string | undefined | set the button's text                                |
 
 ## Customization (Optionals)
 
