@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, SafeAreaView } from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
-import FileWriter from "react-native-file-writer";
+import FileWriter, { IDataType } from "react-native-file-writer";
 
 const mockData = [
   {
@@ -18,6 +18,42 @@ const mockData = [
     name: "Test JSON",
     email: "kurayogun@gmail.com",
     github: "https://github.com/WrathChaos",
+  },
+];
+
+const mockArrData: IDataType[] = [
+  {
+    data: {
+      name: "FreakyCoder",
+      email: "kurayogun@gmail.com",
+      github: "https://github.com/WrathChaos",
+    },
+    filename: "freakycoder2",
+    fileExtension: "json",
+    enableStringify: true,
+    enableDecycle: true,
+  },
+  {
+    data: {
+      name: "Kuray",
+      email: "kurayogun@gmail.com",
+      github: "https://github.com/WrathChaos",
+    },
+    filename: "kuray",
+    fileExtension: "json",
+    enableStringify: true,
+    enableDecycle: true,
+  },
+  {
+    data: {
+      name: "Test JSON",
+      email: "kurayogun@gmail.com",
+      github: "https://github.com/WrathChaos",
+    },
+    filename: "test-hello",
+    fileExtension: "json",
+    enableStringify: true,
+    enableDecycle: true,
   },
 ];
 
@@ -47,13 +83,14 @@ const App = () => {
       style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
     >
       <FileWriter
-        data={mockData}
+        data={mockArrData}
         filename="freakycoder"
         fileExtension="json"
         enableStringify
         enableDecycle
-        onPress={(path: string) => {
-          showFileManager(path);
+        onPress={(path: string | string[]) => {
+          alert(path);
+          // showFileManager(path);
         }}
       />
     </SafeAreaView>

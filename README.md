@@ -61,6 +61,48 @@ Also, this `FileWriter` default button is fully customizable. You can create you
 />
 ```
 
+## Multiple File Writing Usage
+
+You should follow the `IDataType` type for the multiple file writing/exporting. The usage will be the same. It should return the all written file paths as an array.
+
+```jsx
+const mockArrData: IDataType[] = [
+  {
+    data: {
+      name: "FreakyCoder",
+      email: "kurayogun@gmail.com",
+      github: "https://github.com/WrathChaos",
+    },
+    filename: "freakycoder2",
+    fileExtension: "json",
+    enableStringify: true,
+    enableDecycle: true,
+  },
+  {
+    data: {
+      name: "Kuray",
+      email: "kurayogun@gmail.com",
+      github: "https://github.com/WrathChaos",
+    },
+    filename: "kuray",
+    fileExtension: "json",
+    enableStringify: true,
+    enableDecycle: true,
+  },
+  {
+    data: {
+      name: "Test JSON",
+      email: "kurayogun@gmail.com",
+      github: "https://github.com/WrathChaos",
+    },
+    filename: "test-hello",
+    fileExtension: "json",
+    enableStringify: true,
+    enableDecycle: true,
+  },
+];
+```
+
 ## Example Project 😍
 
 You can checkout the example project 🥰

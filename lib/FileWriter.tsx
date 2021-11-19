@@ -17,17 +17,26 @@ import { writeFile } from "./utils";
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
 
-interface IFileWriterProps {
-  style?: CustomStyleProp;
-  textStyle?: CustomTextStyleProp;
-  encoding?: Encoding;
-  TouchableComponent?: any;
+export interface IDataType {
   data: any;
   filename: string;
   fileExtension: string;
   enableDecycle?: boolean;
   enableStringify?: boolean;
-  onPress: (path: string) => void;
+  encoding?: Encoding;
+}
+
+interface IFileWriterProps {
+  style?: CustomStyleProp;
+  textStyle?: CustomTextStyleProp;
+  encoding?: Encoding;
+  TouchableComponent?: any;
+  data: any | IDataType[];
+  filename: string;
+  fileExtension: string;
+  enableDecycle?: boolean;
+  enableStringify?: boolean;
+  onPress: (path: string | string[]) => void;
 }
 
 const FileWriter: React.FC<IFileWriterProps> = ({
@@ -43,21 +52,44 @@ const FileWriter: React.FC<IFileWriterProps> = ({
   TouchableComponent = TouchableOpacity,
   onPress,
 }) => {
-  const handlePress = () => {
-    writeFile(
-      data,
-      filename,
-      fileExtension,
-      encoding,
-      enableDecycle,
-      enableStringify,
-    )
-      .then((path: string) => {
-        onPress && onPress(path);
-      })
-      .catch((err) => {
-        onPress && onPress(err);
-      });
+  const handlePress = async () => {
+    let writtenPaths: string[] = [];
+    // ? Multiple File Writing
+    if (data as IDataType[]) {
+      for (let item of data) {
+        await writeFile(
+          item.data,
+          item.filename,
+          item.fileExtension,
+          item.encoding,
+          item.enableDecycle,
+          item.enableStringify,
+        )
+          .then((path: string) => {
+            writtenPaths.push(path);
+          })
+          .catch((err) => {
+            onPress && onPress(err);
+          });
+      }
+      onPress && onPress(writtenPaths);
+    } else {
+      // ? Single File Writing
+      writeFile(
+        data,
+        filename,
+        fileExtension,
+        encoding,
+        enableDecycle,
+        enableStringify,
+      )
+        .then((path: string) => {
+          onPress && onPress(path);
+        })
+        .catch((err) => {
+          onPress && onPress(err);
+        });
+    }
   };
 
   const DefaultTextChild = () => (
